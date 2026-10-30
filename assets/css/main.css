@@ -1,0 +1,1884 @@
+/**
+ * Cedra Parts — Option 2 Frosted-Glass Design System
+ *
+ * Fonts: Geist, Geist Mono, Instrument Serif
+ * Palette: #F3F2F7 canvas, #0B1C2C navy ink, #7024AB electric purple accent
+ */
+
+:root {
+	--cedra-bg: #F3F2F7;
+	--cedra-ink: #0B1C2C;
+	--cedra-ink-soft: #3F4853;
+	--cedra-muted: #4C5560;
+	--cedra-accent: #7024AB;
+	--cedra-accent-hover: #4E1880;
+	--cedra-eyebrow: #5A1D8C;
+	--cedra-serif: #6A1D9A;
+	--cedra-lavender: #D6C1EF;
+	--cedra-pill-count: #C9B0E6;
+	--cedra-font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--cedra-font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	--cedra-font-serif: 'Instrument Serif', Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body.cedra-glass-theme {
+	margin: 0;
+	font-family: var(--cedra-font-sans);
+	color: var(--cedra-ink);
+	background: var(--cedra-bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 1.5;
+}
+
+a {
+	color: var(--cedra-accent);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--cedra-accent-hover);
+}
+
+img,
+svg {
+	max-width: 100%;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible {
+	outline: 2px solid var(--cedra-accent);
+	outline-offset: 2px;
+}
+
+/* Accessibility Utilities */
+.sr,
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.cedra-skip-link:focus {
+	position: fixed;
+	top: 16px;
+	left: 16px;
+	width: auto;
+	height: auto;
+	clip: auto;
+	z-index: 9999;
+	padding: 12px 20px;
+	border-radius: 999px;
+	background: var(--cedra-ink);
+	color: #FFFFFF;
+	font-weight: 500;
+}
+
+/* Layout Shell & Container */
+.cedra-site-shell {
+	width: 100%;
+	overflow-x: clip;
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.cedra-main {
+	flex: 1 0 auto;
+	position: relative;
+	z-index: 1;
+}
+
+.wrap {
+	max-width: 1360px;
+	margin: 0 auto;
+	padding: 0 48px;
+}
+
+.cedra-mono {
+	font-family: var(--cedra-font-mono);
+}
+
+.cedra-serif-italic {
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-weight: 400;
+}
+
+.cedra-serif-accent {
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-weight: 400;
+	color: var(--cedra-serif);
+}
+
+/* Frosted Glass Surfaces */
+.glass {
+	background: rgba(255, 255, 255, 0.52);
+	-webkit-backdrop-filter: blur(22px) saturate(170%);
+	backdrop-filter: blur(22px) saturate(170%);
+	border: 1px solid rgba(255, 255, 255, 0.75);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 24px 60px -36px rgba(40, 20, 90, 0.45);
+}
+
+.glass-strong {
+	background: rgba(255, 255, 255, 0.72);
+	-webkit-backdrop-filter: blur(26px) saturate(180%);
+	backdrop-filter: blur(26px) saturate(180%);
+	border: 1px solid rgba(255, 255, 255, 0.85);
+	box-shadow: inset 0 1px 0 #FFFFFF, 0 30px 70px -40px rgba(40, 20, 90, 0.5);
+}
+
+.glass-dark {
+	background: rgba(255, 255, 255, 0.07);
+	-webkit-backdrop-filter: blur(24px) saturate(150%);
+	backdrop-filter: blur(24px) saturate(150%);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 30px 70px -40px rgba(0, 0, 0, 0.6);
+}
+
+/* Ambient Radial Orbs */
+.orb {
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.cedra-orb--1 {
+	width: 760px;
+	height: 760px;
+	left: -260px;
+	top: -220px;
+	background: radial-gradient(circle, rgba(74, 35, 155, 0.38) 0%, rgba(74, 35, 155, 0) 68%);
+}
+
+.cedra-orb--2 {
+	width: 820px;
+	height: 820px;
+	right: -300px;
+	top: 80px;
+	background: radial-gradient(circle, rgba(159, 97, 207, 0.42) 0%, rgba(159, 97, 207, 0) 66%);
+}
+
+.cedra-orb--3 {
+	width: 900px;
+	height: 900px;
+	left: 20%;
+	top: 1100px;
+	background: radial-gradient(circle, rgba(110, 26, 143, 0.2) 0%, rgba(110, 26, 143, 0) 66%);
+}
+
+.cedra-orb--4 {
+	width: 700px;
+	height: 700px;
+	right: -200px;
+	top: 1700px;
+	background: radial-gradient(circle, rgba(74, 35, 155, 0.22) 0%, rgba(74, 35, 155, 0) 66%);
+}
+
+/* Shared Eyebrows, Dots & Buttons */
+.cedra-pulse-dot {
+	width: 8px;
+	height: 8px;
+	flex: 0 0 8px;
+	border-radius: 999px;
+	background: var(--cedra-accent);
+	box-shadow: 0 0 0 4px rgba(112, 36, 171, 0.18);
+}
+
+.cedra-eyebrow-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 999px;
+	padding: 8px 16px 8px 10px;
+	margin-bottom: 28px;
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--cedra-eyebrow);
+}
+
+.cedra-eyebrow-pill--sm {
+	margin-bottom: 0;
+	padding: 6px 14px 6px 9px;
+	font-size: 11px;
+}
+
+.cedra-eyebrow-mono {
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--cedra-eyebrow);
+}
+
+.cedra-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 52px;
+	padding: 0 24px;
+	border-radius: 999px;
+	border: 0;
+	font: inherit;
+	font-size: 15px;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: none;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.cedra-btn:hover {
+	transform: translateY(-1px);
+}
+
+.cedra-btn--lg {
+	height: 56px;
+	padding: 0 28px;
+}
+
+.cedra-btn--full {
+	width: 100%;
+}
+
+.cedra-btn--dark {
+	background: var(--cedra-ink);
+	color: #FFFFFF !important;
+	box-shadow: 0 12px 28px -14px rgba(11, 28, 44, 0.7);
+}
+
+.cedra-btn--dark:hover {
+	background: #142B42;
+	color: #FFFFFF !important;
+}
+
+.cedra-btn--accent {
+	background: var(--cedra-accent);
+	color: #FFFFFF !important;
+	box-shadow: 0 12px 28px -12px rgba(112, 36, 171, 0.8);
+}
+
+.cedra-btn--accent:hover {
+	background: var(--cedra-accent-hover);
+	color: #FFFFFF !important;
+}
+
+.cedra-btn--glass {
+	background: rgba(255, 255, 255, 0.72);
+	border: 1px solid rgba(11, 28, 44, 0.1);
+	color: var(--cedra-ink) !important;
+}
+
+.cedra-btn--glass:hover {
+	background: rgba(255, 255, 255, 0.94);
+	border-color: rgba(112, 36, 171, 0.32);
+}
+
+.cedra-btn--dark-glass {
+	color: #FFFFFF !important;
+}
+
+.cedra-btn--dark-glass:hover {
+	background: rgba(255, 255, 255, 0.14);
+	color: #FFFFFF !important;
+}
+
+.pill {
+	transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pill:hover {
+	background: rgba(255, 255, 255, 0.9) !important;
+	border-color: rgba(112, 36, 171, 0.35) !important;
+}
+
+/* Top Utility Line */
+.cedra-topbar {
+	position: relative;
+	z-index: 2;
+	font-size: 13px;
+	color: var(--cedra-muted);
+}
+
+.cedra-topbar__inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	height: 40px;
+}
+
+.cedra-topbar__links {
+	display: flex;
+	gap: 24px;
+}
+
+.cedra-topbar__links a {
+	color: var(--cedra-muted);
+}
+
+.cedra-topbar__links a:hover {
+	color: var(--cedra-accent);
+}
+
+/* Sticky Floating Glass Pill Header */
+.cedra-header {
+	position: sticky;
+	top: 12px;
+	z-index: 40;
+	padding: 0 0 4px;
+}
+
+body.admin-bar .cedra-header {
+	top: 44px;
+}
+
+.cedra-nav {
+	display: flex;
+	align-items: center;
+	gap: 36px;
+	height: 72px;
+	border-radius: 999px;
+	padding: 0 10px 0 24px;
+}
+
+.cedra-nav__brand {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+}
+
+.cedra-nav__logo {
+	height: 44px;
+	width: auto;
+	display: block;
+}
+
+.cedra-nav__links {
+	display: flex;
+	gap: 6px;
+	font-size: 15px;
+}
+
+.cedra-nav__link {
+	color: var(--cedra-muted);
+	padding: 10px 16px;
+	border-radius: 999px;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cedra-nav__link:hover {
+	color: var(--cedra-ink);
+	background: rgba(255, 255, 255, 0.55);
+}
+
+.cedra-nav__link.is-active {
+	color: var(--cedra-ink);
+	font-weight: 600;
+	background: rgba(255, 255, 255, 0.85);
+	box-shadow: inset 0 0 0 1px rgba(11, 28, 44, 0.06);
+}
+
+.cedra-nav__actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-left: auto;
+}
+
+.cedra-nav__icon-btn {
+	width: 44px;
+	height: 44px;
+	display: grid;
+	place-items: center;
+	border-radius: 999px;
+	color: var(--cedra-ink);
+	transition: background 0.2s ease;
+}
+
+.cedra-nav__icon-btn:hover {
+	background: rgba(255, 255, 255, 0.7);
+	color: var(--cedra-accent);
+}
+
+.cedra-nav__cart {
+	height: 44px;
+	padding: 0 14px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-radius: 999px;
+	color: var(--cedra-ink);
+	font-size: 15px;
+	transition: background 0.2s ease;
+}
+
+.cedra-nav__cart:hover {
+	background: rgba(255, 255, 255, 0.7);
+	color: var(--cedra-accent);
+}
+
+.cedra-nav__cart-count {
+	font-family: var(--cedra-font-mono);
+	font-size: 13px;
+}
+
+.cedra-nav__quote {
+	margin-left: 6px;
+	background: var(--cedra-ink);
+	color: #FFFFFF !important;
+	font-weight: 500;
+	font-size: 14px;
+	padding: 0 22px;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-radius: 999px;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cedra-nav__quote:hover {
+	background: var(--cedra-accent);
+	color: #FFFFFF !important;
+	transform: translateY(-1px);
+}
+
+.show-m {
+	display: none;
+}
+
+.cedra-nav__burger {
+	width: 44px;
+	height: 44px;
+	border-radius: 999px;
+	border: 0;
+	background: rgba(255, 255, 255, 0.65);
+	color: var(--cedra-ink);
+	cursor: pointer;
+	place-items: center;
+}
+
+/* Mobile Dropdown Menu */
+.cedra-mobile-menu {
+	margin-top: 10px;
+	border-radius: 28px;
+	padding: 20px;
+}
+
+.cedra-mobile-menu__links {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.cedra-mobile-menu__link {
+	padding: 12px 16px;
+	border-radius: 16px;
+	color: var(--cedra-ink);
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.cedra-mobile-menu__link.is-active {
+	background: rgba(255, 255, 255, 0.85);
+	color: var(--cedra-accent);
+}
+
+.cedra-mobile-menu__foot {
+	margin-top: 16px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(11, 28, 44, 0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.cedra-mobile-menu__contact {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 8px;
+	font-size: 13px;
+}
+
+/* Catalog Hero Section */
+.cedra-hero {
+	padding: 80px 0 56px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-spotlight {
+	position: absolute;
+	left: 900px;
+	top: 220px;
+	width: 680px;
+	height: 680px;
+	margin: -340px 0 0 -340px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(159, 97, 207, 0.34) 0%, rgba(159, 97, 207, 0.1) 35%, rgba(159, 97, 207, 0) 62%);
+	pointer-events: none;
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+
+.cedra-spotlight.is-visible {
+	opacity: 1;
+}
+
+.cedra-hero__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+	gap: 48px;
+	align-items: end;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-hero__h1 {
+	margin: 0;
+	font-size: clamp(60px, 8.2vw, 116px);
+	line-height: 0.92;
+	letter-spacing: -0.055em;
+	font-weight: 600;
+	color: var(--cedra-ink);
+}
+
+.cedra-hero__serif {
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -0.02em;
+	color: var(--cedra-serif);
+}
+
+.cedra-hero__aside {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	padding-bottom: 12px;
+}
+
+.cedra-seal {
+	align-self: flex-end;
+	position: relative;
+	width: 136px;
+	height: 136px;
+	display: block;
+	border-radius: 50%;
+}
+
+.cedra-seal__ring,
+.cedra-seal__center {
+	position: absolute;
+	inset: 0;
+	display: block;
+}
+
+.cedra-seal__text {
+	font-family: var(--cedra-font-mono);
+	font-size: 10px;
+	letter-spacing: 3px;
+}
+
+.spin {
+	animation: cedraSpin 14s linear infinite;
+	transform-origin: center center;
+	will-change: transform;
+}
+
+.badge:hover .spin {
+	animation-duration: 5s;
+}
+
+@keyframes cedraSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.cedra-hero__desc {
+	margin: 0;
+	font-size: 18px;
+	line-height: 1.6;
+	color: var(--cedra-ink-soft);
+}
+
+/* Search Pill Bar & Distributor Marquee */
+.cedra-search-wrap {
+	margin-top: 56px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-search {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border-radius: 999px;
+	padding: 8px 8px 8px 28px;
+	flex-wrap: wrap;
+}
+
+.cedra-search__icon {
+	flex: 0 0 auto;
+}
+
+.cedra-search__input {
+	flex: 1 1 260px;
+	border: 0;
+	outline: none;
+	font: inherit;
+	font-size: 17px;
+	color: var(--cedra-ink);
+	height: 52px;
+	background: transparent;
+	min-width: 0;
+}
+
+.cedra-search__input::placeholder {
+	color: #6B7480;
+}
+
+.cedra-search__brand {
+	border: 0;
+	border-left: 1px solid rgba(11, 28, 44, 0.12);
+	font: inherit;
+	font-size: 15px;
+	color: var(--cedra-ink);
+	height: 40px;
+	padding: 0 20px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.cedra-search__btn {
+	height: 56px;
+	padding: 0 30px;
+	border-radius: 999px;
+	border: 0;
+	background: var(--cedra-accent);
+	color: #FFFFFF;
+	font: inherit;
+	font-weight: 500;
+	font-size: 16px;
+	cursor: pointer;
+	box-shadow: 0 10px 24px -12px rgba(112, 36, 171, 0.8);
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cedra-search__btn:hover {
+	background: var(--cedra-accent-hover);
+	transform: translateY(-1px);
+}
+
+.cedra-marquee-row {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-top: 28px;
+	flex-wrap: wrap;
+}
+
+.cedra-marquee-row__label {
+	font-size: 13px;
+	color: var(--cedra-muted);
+}
+
+.marq {
+	flex: 1 1 400px;
+	min-width: 0;
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marq-track {
+	display: flex;
+	gap: 12px;
+	width: max-content;
+	animation: cedraMarq 28s linear infinite;
+	padding: 6px 0;
+}
+
+.marq:hover .marq-track,
+.marq:focus-within .marq-track {
+	animation-play-state: paused;
+}
+
+@keyframes cedraMarq {
+	to {
+		transform: translateX(calc(-50% - 6px));
+	}
+}
+
+.cedra-logo-chip {
+	height: 68px;
+	padding: 0 20px;
+	border-radius: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cedra-logo-chip img {
+	width: auto;
+	display: block;
+	mix-blend-mode: multiply;
+}
+
+/* Sticky Category Filter Rail */
+.cedra-rail-sticky {
+	position: sticky;
+	top: 92px;
+	z-index: 25;
+	padding: 8px 0;
+}
+
+body.admin-bar .cedra-rail-sticky {
+	top: 124px;
+}
+
+.cedra-rail-bar {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	height: 68px;
+	border-radius: 22px;
+	padding: 0 12px;
+}
+
+.rail {
+	display: flex;
+	gap: 6px;
+	overflow-x: auto;
+	flex: 1;
+	min-width: 0;
+	scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+	display: none;
+}
+
+.cedra-cat-pill {
+	flex: 0 0 auto;
+	height: 44px;
+	padding: 0 18px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 0.45);
+	color: var(--cedra-ink);
+	font: inherit;
+	font-size: 14px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.cedra-cat-pill__count {
+	font-family: var(--cedra-font-mono);
+	font-size: 11px;
+	color: var(--cedra-muted);
+}
+
+.cedra-cat-pill.is-selected {
+	border-color: var(--cedra-ink);
+	background: var(--cedra-ink);
+	color: #FFFFFF;
+	font-weight: 500;
+}
+
+.cedra-cat-pill.is-selected .cedra-cat-pill__count {
+	color: var(--cedra-pill-count);
+}
+
+.cedra-sort-select {
+	flex: 0 0 auto;
+	height: 44px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	padding: 0 16px;
+	font: inherit;
+	font-size: 14px;
+	color: var(--cedra-ink);
+	background: rgba(255, 255, 255, 0.6);
+	cursor: pointer;
+}
+
+/* Product Catalog Grid & Cards */
+.cedra-catalog {
+	padding: 40px 0 96px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-catalog__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 16px;
+	margin-bottom: 28px;
+	flex-wrap: wrap;
+}
+
+.cedra-catalog__title {
+	margin: 0;
+	font-size: 32px;
+	font-weight: 500;
+	letter-spacing: -0.035em;
+	color: var(--cedra-ink);
+}
+
+.cedra-catalog__count {
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-weight: 400;
+	color: var(--cedra-muted);
+	font-size: 30px;
+}
+
+.cedra-catalog__meta-right {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.cedra-page-pill {
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	color: var(--cedra-ink-soft);
+	border-radius: 999px;
+	padding: 8px 14px;
+}
+
+.cedra-clear-pill {
+	font-family: var(--cedra-font-sans);
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--cedra-eyebrow);
+	border-radius: 999px;
+	padding: 7px 14px;
+	cursor: pointer;
+}
+
+.cedra-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 20px;
+	transition: opacity 0.25s ease;
+}
+
+.cedra-grid.is-loading {
+	opacity: 0.52;
+	pointer-events: none;
+}
+
+.card.cedra-card {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	border-radius: 28px;
+	padding: 10px 10px 18px;
+	transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.card.cedra-card:hover {
+	transform: translateY(-6px);
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.cedra-card__stage {
+	display: block;
+	position: relative;
+	background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(241, 233, 248, 0.7));
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	border-radius: 20px;
+	padding: 44px 22px 22px;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+}
+
+.cedra-card__sku {
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	z-index: 2;
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	color: var(--cedra-ink-soft);
+	background: rgba(255, 255, 255, 0.78);
+	border-radius: 999px;
+	padding: 4px 10px;
+	max-width: calc(100% - 76px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.cedra-card__num {
+	position: absolute;
+	top: 12px;
+	right: 18px;
+	z-index: 2;
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-size: 18px;
+	color: #7A8390;
+}
+
+.cedra-card__art {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card.cedra-card:hover .cedra-card__art {
+	transform: scale(1.06) translateY(-4px);
+}
+
+.cedra-product-photo {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	display: block;
+	mix-blend-mode: multiply;
+}
+
+.cedra-tech-svg {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.cedra-card__meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	align-items: flex-start;
+	padding: 0 10px;
+	margin-top: auto;
+}
+
+.cedra-card__info {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+}
+
+.cedra-card__title {
+	color: var(--cedra-ink);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.35;
+	letter-spacing: -0.01em;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.cedra-card__title:hover {
+	color: var(--cedra-accent);
+}
+
+.cedra-card__price {
+	font-size: 16px;
+	color: var(--cedra-ink-soft);
+}
+
+.cedra-card__price del {
+	opacity: 0.55;
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+.cedra-card__price ins {
+	text-decoration: none;
+	font-weight: 600;
+	color: var(--cedra-ink);
+}
+
+.cedra-card__plus {
+	flex: 0 0 auto;
+	width: 46px;
+	height: 46px;
+	border-radius: 999px;
+	border: 0;
+	background: var(--cedra-ink);
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	box-shadow: 0 8px 20px -10px rgba(11, 28, 44, 0.6);
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cedra-card__plus:hover {
+	background: var(--cedra-accent) !important;
+	transform: rotate(90deg);
+}
+
+.cedra-card__plus .cedra-icon-check {
+	display: none;
+}
+
+.cedra-card__plus.is-added {
+	background: #178556 !important;
+	transform: none !important;
+}
+
+.cedra-card__plus.is-added .cedra-icon-plus {
+	display: none;
+}
+
+.cedra-card__plus.is-added .cedra-icon-check {
+	display: block;
+}
+
+.cedra-card__plus.is-busy {
+	opacity: 0.65;
+	pointer-events: none;
+}
+
+/* Empty State Card */
+.cedra-empty-card {
+	grid-column: span 2;
+	border-radius: 28px;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.cedra-empty-card__title {
+	font-size: 28px;
+	font-weight: 500;
+	letter-spacing: -0.03em;
+}
+
+.cedra-empty-card__desc {
+	margin: 0;
+	color: var(--cedra-ink-soft);
+	line-height: 1.6;
+	max-width: 480px;
+}
+
+.cedra-empty-card__actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-top: 8px;
+}
+
+/* Load More & Progress Indicator */
+.cedra-loadmore {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+	margin-top: 64px;
+}
+
+.cedra-loadmore__status {
+	font-size: 14px;
+	color: var(--cedra-ink-soft);
+}
+
+.cedra-progress {
+	width: 220px;
+	height: 3px;
+	background: rgba(11, 28, 44, 0.1);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.cedra-progress__bar {
+	height: 100%;
+	background: var(--cedra-accent);
+	transition: width 0.35s ease;
+}
+
+.cedra-loadmore__btn {
+	margin-top: 8px;
+	height: 54px;
+	padding: 0 32px;
+	border-radius: 999px;
+	color: var(--cedra-ink);
+	font: inherit;
+	font-weight: 500;
+	font-size: 15px;
+	cursor: pointer;
+	transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.cedra-loadmore__btn:hover {
+	background: rgba(255, 255, 255, 0.92);
+	border-color: rgba(112, 36, 171, 0.35);
+	transform: translateY(-2px);
+}
+
+.cedra-loadmore__btn.is-busy {
+	opacity: 0.65;
+	pointer-events: none;
+}
+
+/* Help Section (Cross-Reference & Volume Pricing) */
+.cedra-help {
+	position: relative;
+	background: linear-gradient(180deg, rgba(243, 242, 247, 0) 0%, #EDE6F7 22%, #F4EFFA 100%);
+	padding: 104px 0 112px;
+	overflow: hidden;
+}
+
+.cedra-help__dots {
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(rgba(112, 36, 171, 0.16) 1px, transparent 1.4px);
+	background-size: 22px 22px;
+	-webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 45%, #000 15%, transparent 78%);
+	mask-image: radial-gradient(ellipse 70% 75% at 50% 45%, #000 15%, transparent 78%);
+	pointer-events: none;
+}
+
+.cedra-help__orb--left {
+	width: 680px;
+	height: 680px;
+	left: -200px;
+	top: -120px;
+	background: radial-gradient(circle, rgba(74, 35, 155, 0.24) 0%, rgba(74, 35, 155, 0) 66%);
+}
+
+.cedra-help__orb--right {
+	width: 760px;
+	height: 760px;
+	right: -220px;
+	bottom: -300px;
+	background: radial-gradient(circle, rgba(159, 97, 207, 0.34) 0%, rgba(159, 97, 207, 0) 66%);
+}
+
+.cedra-help__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-help__card {
+	color: var(--cedra-ink);
+	border-radius: 32px;
+	padding: 48px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-height: 360px;
+	justify-content: space-between;
+}
+
+.cedra-help__card--tinted {
+	background: linear-gradient(150deg, rgba(255, 255, 255, 0.75), rgba(225, 208, 244, 0.7));
+}
+
+.cedra-help__heading {
+	margin: 0 0 14px;
+	font-size: clamp(36px, 4vw, 52px);
+	line-height: 1;
+	letter-spacing: -0.045em;
+	font-weight: 500;
+}
+
+.cedra-help__copy {
+	margin: 0;
+	color: var(--cedra-ink-soft);
+	font-size: 16px;
+	line-height: 1.6;
+	max-width: 440px;
+}
+
+.cedra-help__card .cedra-btn {
+	align-self: flex-start;
+}
+
+.cedra-help__emergency-wrap {
+	margin-top: 20px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-help__emergency {
+	border-radius: 999px;
+	padding: 12px 12px 12px 28px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+	color: var(--cedra-ink);
+}
+
+.cedra-help__emergency-text {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 15px;
+}
+
+.cedra-help__phone-pill {
+	height: 46px;
+	padding: 0 20px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid rgba(11, 28, 44, 0.08);
+	color: var(--cedra-ink) !important;
+	font-family: var(--cedra-font-mono);
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cedra-help__phone-pill:hover {
+	background: #FFFFFF;
+	border-color: rgba(112, 36, 171, 0.35);
+}
+
+/* Rounded Dark Bento Footer */
+.cedra-footer {
+	position: relative;
+	background: var(--cedra-ink);
+	color: #C3C8CD;
+	overflow: hidden;
+	padding-bottom: 8px;
+	border-radius: 48px 48px 0 0;
+	margin-top: -48px;
+	z-index: 2;
+}
+
+.cedra-footer__orb {
+	width: 900px;
+	height: 900px;
+	left: 30%;
+	top: 120px;
+	background: radial-gradient(circle, rgba(110, 26, 143, 0.45) 0%, rgba(110, 26, 143, 0) 66%);
+}
+
+.cedra-footer__inner {
+	position: relative;
+	z-index: 1;
+	padding-top: 24px;
+}
+
+.cedra-footer__hero {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 32px;
+	flex-wrap: wrap;
+	padding: 24px 0 48px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cedra-footer__headline {
+	margin: 0;
+	font-size: clamp(48px, 6.4vw, 88px);
+	line-height: 0.95;
+	letter-spacing: -0.05em;
+	font-weight: 500;
+	color: #FFFFFF;
+}
+
+.cedra-footer__serif {
+	font-family: var(--cedra-font-serif);
+	font-style: italic;
+	font-weight: 400;
+	color: var(--cedra-lavender);
+}
+
+.cedra-footer__cta-group {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.cedra-footer__bento {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 48px;
+}
+
+.cedra-bento-card {
+	border-radius: 28px;
+	padding: 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	min-height: 240px;
+}
+
+.cedra-bento-card--brand {
+	grid-column: span 2;
+	padding: 32px;
+	justify-content: space-between;
+	gap: 28px;
+}
+
+.cedra-bento-card--hours {
+	gap: 14px;
+	background: rgba(159, 97, 207, 0.14);
+}
+
+.cedra-footer__logo {
+	display: block;
+	height: 64px;
+	width: auto;
+	align-self: flex-start;
+	filter: brightness(0) invert(1);
+}
+
+.cedra-footer__mission {
+	margin: 0;
+	font-size: 20px;
+	line-height: 1.45;
+	color: #FFFFFF;
+	letter-spacing: -0.02em;
+	max-width: 440px;
+}
+
+.cedra-footer__pills {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.cedra-footer__pills a {
+	height: 40px;
+	padding: 0 16px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	color: #FFFFFF;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cedra-footer__pills a:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.35);
+	color: #FFFFFF;
+}
+
+.cedra-footer__label {
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	letter-spacing: 0.12em;
+	color: #A9B0B6;
+}
+
+.cedra-footer__contact-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+
+.cedra-footer__contact-row:hover {
+	color: var(--cedra-lavender);
+}
+
+.cedra-footer__icon-box {
+	width: 40px;
+	height: 40px;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.1);
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+}
+
+.cedra-footer__subnote {
+	margin: auto 0 0;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #C3C8CD;
+}
+
+.cedra-footer__hours-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+}
+
+.cedra-open-pill {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #FFFFFF;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 999px;
+	padding: 6px 12px;
+}
+
+.cedra-open-pill__dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 999px;
+}
+
+.cedra-footer__hours-row {
+	display: flex;
+	justify-content: space-between;
+	color: #C3C8CD;
+	font-size: 16px;
+}
+
+.cedra-footer__hours-row--active {
+	color: #FFFFFF;
+	padding-top: 8px;
+}
+
+.cedra-footer__address {
+	margin-top: auto;
+	padding-top: 14px;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	font-size: 14px;
+	line-height: 1.55;
+	color: #D5D9DE;
+}
+
+.cedra-footer__watermark {
+	margin-top: 64px;
+	height: 190px;
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(180deg, #000 30%, transparent);
+	mask-image: linear-gradient(180deg, #000 30%, transparent);
+}
+
+.cedra-footer__watermark img {
+	display: block;
+	width: 100%;
+	height: auto;
+	filter: brightness(0) invert(1);
+	opacity: 0.09;
+}
+
+.cedra-footer__bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding: 24px 0;
+	font-size: 13px;
+	color: #A9B0B6;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cedra-back-top {
+	height: 44px;
+	padding: 0 18px;
+	border-radius: 999px;
+	color: #FFFFFF !important;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+}
+
+.cedra-back-top:hover {
+	background: rgba(255, 255, 255, 0.14);
+}
+
+/* Slide-Over Frosted-Glass Mini-Cart Drawer */
+.cedra-drawer {
+	position: fixed;
+	inset: 0;
+	z-index: 90;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.cedra-drawer.is-open {
+	pointer-events: auto;
+	visibility: visible;
+}
+
+.cedra-drawer__backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(11, 28, 44, 0.36);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.cedra-drawer.is-open .cedra-drawer__backdrop {
+	opacity: 1;
+}
+
+.cedra-drawer__panel {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	bottom: 12px;
+	width: min(460px, calc(100vw - 24px));
+	border-radius: 32px;
+	background: rgba(248, 246, 252, 0.88);
+	transform: translateX(calc(100% + 24px));
+	transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.cedra-drawer.is-open .cedra-drawer__panel {
+	transform: translateX(0);
+}
+
+.cedra-drawer__inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 24px;
+	gap: 18px;
+}
+
+.cedra-drawer__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 12px;
+	padding-bottom: 14px;
+	border-bottom: 1px solid rgba(11, 28, 44, 0.08);
+}
+
+.cedra-drawer__title {
+	margin: 4px 0 0;
+	font-size: 28px;
+	font-weight: 500;
+	letter-spacing: -0.03em;
+}
+
+.cedra-drawer__close {
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	border: 1px solid rgba(11, 28, 44, 0.08);
+	background: rgba(255, 255, 255, 0.75);
+	color: var(--cedra-ink);
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+}
+
+.cedra-drawer__empty {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 12px;
+	padding: 24px;
+}
+
+.cedra-drawer__empty-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 22px;
+	display: grid;
+	place-items: center;
+	color: var(--cedra-accent);
+}
+
+.cedra-drawer__empty h3 {
+	margin: 6px 0 0;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.cedra-drawer__empty p {
+	margin: 0 0 12px;
+	font-size: 14px;
+	color: var(--cedra-ink-soft);
+	max-width: 280px;
+}
+
+.cedra-drawer__items {
+	flex: 1;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-right: 4px;
+}
+
+.cedra-drawer__item {
+	position: relative;
+	display: flex;
+	gap: 14px;
+	padding: 12px;
+	border-radius: 20px;
+	align-items: center;
+}
+
+.cedra-drawer__thumb {
+	width: 68px;
+	height: 68px;
+	flex: 0 0 68px;
+	border-radius: 14px;
+	background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(241, 233, 248, 0.7));
+	padding: 8px;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+
+.cedra-drawer__item-body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.cedra-drawer__item-sku {
+	font-family: var(--cedra-font-mono);
+	font-size: 11px;
+	color: var(--cedra-muted);
+}
+
+.cedra-drawer__item-name {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--cedra-ink);
+	line-height: 1.3;
+	padding-right: 22px;
+}
+
+.cedra-drawer__item-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+	margin-top: 4px;
+}
+
+.cedra-drawer__item-price {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--cedra-ink-soft);
+}
+
+.cedra-qty-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid rgba(11, 28, 44, 0.08);
+	border-radius: 999px;
+	padding: 2px 6px;
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+}
+
+.cedra-qty-pill button {
+	width: 24px;
+	height: 24px;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--cedra-ink);
+	cursor: pointer;
+	font-size: 15px;
+	line-height: 1;
+}
+
+.cedra-qty-pill button:hover {
+	background: rgba(112, 36, 171, 0.12);
+	color: var(--cedra-accent);
+}
+
+.cedra-drawer__remove {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 26px;
+	height: 26px;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--cedra-muted);
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+}
+
+.cedra-drawer__remove:hover {
+	background: rgba(11, 28, 44, 0.08);
+	color: var(--cedra-ink);
+}
+
+.cedra-drawer__foot {
+	border-radius: 24px;
+	padding: 18px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.cedra-drawer__subtotal {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	font-size: 16px;
+}
+
+.cedra-drawer__subtotal strong {
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.cedra-drawer__note {
+	margin: 0;
+	font-size: 12px;
+	color: var(--cedra-muted);
+}
+
+.cedra-drawer__actions {
+	display: grid;
+	grid-template-columns: 1fr 1.2fr;
+	gap: 10px;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.spin,
+	.marq-track {
+		animation: none !important;
+	}
+	.card.cedra-card:hover,
+	.card.cedra-card:hover .cedra-card__art,
+	.cedra-card__plus:hover,
+	.cedra-btn:hover {
+		transform: none !important;
+	}
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
+	.wrap {
+		padding: 0 20px;
+	}
+	.hide-m {
+		display: none !important;
+	}
+	.show-m {
+		display: grid;
+	}
+	.hero,
+	.cedra-hero__grid,
+	.cedra-help__grid {
+		grid-template-columns: minmax(0, 1fr) !important;
+	}
+	.span2,
+	.cedra-empty-card,
+	.cedra-bento-card--brand {
+		grid-column: auto !important;
+	}
+	.foot,
+	.cedra-footer__bento {
+		grid-template-columns: minmax(0, 1fr) !important;
+	}
+	.cedra-hero {
+		padding: 48px 0 40px;
+	}
+	.cedra-hero__h1 {
+		font-size: 56px !important;
+	}
+	.cedra-help__card {
+		padding: 32px;
+		min-height: 0;
+	}
+	.cedra-footer {
+		border-radius: 32px 32px 0 0;
+	}
+}
+
+@media (max-width: 560px) {
+	.hide-xs {
+		display: none !important;
+	}
+	.cedra-nav {
+		height: 64px;
+		padding: 0 8px 0 16px;
+		gap: 12px;
+	}
+	.cedra-nav__logo {
+		height: 36px;
+	}
+	.cedra-search {
+		border-radius: 26px;
+		padding: 12px 16px;
+	}
+	.cedra-search__brand {
+		width: 100%;
+		border-left: 0;
+		border-top: 1px solid rgba(11, 28, 44, 0.1);
+		padding: 8px 0 4px;
+	}
+	.cedra-search__btn {
+		width: 100%;
+		height: 48px;
+	}
+	.cedra-hero__h1 {
+		font-size: 46px !important;
+	}
+}

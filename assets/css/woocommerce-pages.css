@@ -1,0 +1,607 @@
+/**
+ * Cedra Parts — Single Product, Cart, Checkout, My Account, & 404 Frosted-Glass Styles
+ */
+
+/* Breadcrumb Pill */
+.cedra-pdp-section,
+.cedra-page-section {
+	padding: 44px 0 88px;
+	position: relative;
+	z-index: 1;
+}
+
+.cedra-breadcrumb {
+	margin-bottom: 24px;
+}
+
+.cedra-breadcrumb__pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	border-radius: 999px;
+	padding: 8px 18px;
+	font-size: 13px;
+	color: var(--cedra-muted);
+}
+
+.cedra-breadcrumb__pill a {
+	color: var(--cedra-muted);
+}
+
+.cedra-breadcrumb__pill a:hover {
+	color: var(--cedra-accent);
+}
+
+.cedra-breadcrumb__current {
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	color: var(--cedra-ink);
+	font-weight: 500;
+}
+
+/* Single Product 2-Column Layout */
+.cedra-pdp {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+.cedra-pdp__media {
+	border-radius: 32px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.cedra-pdp__stage {
+	position: relative;
+	background: linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(241, 233, 248, 0.76));
+	border: 1px solid rgba(255, 255, 255, 0.92);
+	border-radius: 24px;
+	padding: 56px 36px 36px;
+	aspect-ratio: 1 / 1;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+
+.cedra-pdp__brand-chip {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	z-index: 2;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--cedra-eyebrow);
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid rgba(112, 36, 171, 0.16);
+	border-radius: 999px;
+	padding: 4px 12px;
+}
+
+.cedra-pdp__main-art {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+}
+
+.cedra-pdp__photo {
+	max-height: 420px;
+}
+
+.cedra-pdp__thumbs {
+	display: flex;
+	gap: 10px;
+	overflow-x: auto;
+	padding: 2px;
+}
+
+.cedra-pdp__thumb {
+	width: 76px;
+	height: 76px;
+	flex: 0 0 76px;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.9);
+	background: rgba(255, 255, 255, 0.72);
+	padding: 8px;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cedra-pdp__thumb img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	mix-blend-mode: multiply;
+}
+
+.cedra-pdp__thumb.is-active,
+.cedra-pdp__thumb:hover {
+	border-color: var(--cedra-accent);
+	background: #FFFFFF;
+}
+
+/* Single Product Summary Box */
+.cedra-pdp__summary {
+	border-radius: 32px;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.cedra-pdp__badges {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.cedra-stock-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	border-radius: 999px;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--cedra-ink);
+}
+
+.cedra-stock-pill__dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: #5BD69A;
+}
+
+.cedra-stock-pill.is-out .cedra-stock-pill__dot {
+	background: #F0A35E;
+}
+
+.cedra-pdp__title {
+	margin: 0;
+	font-size: clamp(28px, 3.2vw, 42px);
+	line-height: 1.08;
+	letter-spacing: -0.035em;
+	font-weight: 600;
+	color: var(--cedra-ink);
+}
+
+.cedra-pdp__partline {
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
+	font-size: 14px;
+	color: var(--cedra-muted);
+}
+
+.cedra-pdp__partline strong {
+	color: var(--cedra-ink);
+}
+
+.cedra-pdp__price-box {
+	border-radius: 22px;
+	padding: 18px 22px;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.cedra-pdp__price {
+	font-size: 32px;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	color: var(--cedra-ink);
+}
+
+.cedra-pdp__price del {
+	font-size: 20px;
+	opacity: 0.5;
+	margin-right: 8px;
+}
+
+.cedra-pdp__price ins {
+	text-decoration: none;
+}
+
+.cedra-pdp__currency {
+	font-family: var(--cedra-font-mono);
+	font-size: 12px;
+	color: var(--cedra-muted);
+}
+
+.cedra-pdp__excerpt {
+	font-size: 16px;
+	line-height: 1.65;
+	color: var(--cedra-ink-soft);
+}
+
+.cedra-pdp__excerpt p {
+	margin: 0;
+}
+
+.cedra-pdp__buy-row {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.cedra-pdp__qty {
+	display: inline-flex;
+	align-items: center;
+	height: 56px;
+	border-radius: 999px;
+	padding: 0 8px;
+}
+
+.cedra-pdp__qty button {
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	border: 0;
+	background: transparent;
+	color: var(--cedra-ink);
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.cedra-pdp__qty button:hover {
+	background: rgba(112, 36, 171, 0.12);
+	color: var(--cedra-accent);
+}
+
+.cedra-pdp__qty input {
+	width: 52px;
+	border: 0;
+	background: transparent;
+	text-align: center;
+	font-family: var(--cedra-font-mono);
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--cedra-ink);
+	-moz-appearance: textfield;
+}
+
+.cedra-pdp__qty input::-webkit-outer-spin-button,
+.cedra-pdp__qty input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.cedra-pdp__add-btn {
+	flex: 1 1 200px;
+}
+
+.cedra-pdp__secondary-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding-top: 6px;
+}
+
+.cedra-pdp__text-link {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.cedra-pdp__trust {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin-top: 4px;
+}
+
+.cedra-pdp__trust-item {
+	border-radius: 18px;
+	padding: 14px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.cedra-pdp__trust-item strong {
+	font-size: 11px;
+	letter-spacing: 0.1em;
+	color: var(--cedra-eyebrow);
+}
+
+.cedra-pdp__trust-item span {
+	font-size: 13px;
+	color: var(--cedra-ink-soft);
+}
+
+/* Details & Specifications Bento */
+.cedra-pdp-details {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 20px;
+	margin-top: 24px;
+}
+
+.cedra-pdp-details__card {
+	border-radius: 28px;
+	padding: 36px;
+}
+
+.cedra-pdp-details__heading {
+	margin: 8px 0 20px;
+	font-size: 32px;
+	font-weight: 500;
+	letter-spacing: -0.035em;
+}
+
+.cedra-prose {
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--cedra-ink-soft);
+}
+
+.cedra-prose p:first-child {
+	margin-top: 0;
+}
+
+.cedra-prose p:last-child {
+	margin-bottom: 0;
+}
+
+.cedra-spec-list {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.cedra-spec-list__row {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 13px 0;
+	border-bottom: 1px solid rgba(11, 28, 44, 0.08);
+	font-size: 15px;
+}
+
+.cedra-spec-list__row:last-child {
+	border-bottom: 0;
+}
+
+.cedra-spec-list__row dt {
+	color: var(--cedra-muted);
+}
+
+.cedra-spec-list__row dd {
+	margin: 0;
+	font-weight: 500;
+	color: var(--cedra-ink);
+	text-align: right;
+}
+
+.cedra-related {
+	margin-top: 64px;
+}
+
+/* Standard & WooCommerce Pages (Cart, Checkout, My Account) */
+.cedra-page-head {
+	margin-bottom: 28px;
+}
+
+.cedra-page-head__row {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.cedra-page-title {
+	margin: 0;
+	font-size: clamp(38px, 5vw, 64px);
+	line-height: 0.98;
+	letter-spacing: -0.045em;
+	font-weight: 600;
+}
+
+.cedra-back-catalog {
+	padding: 10px 18px;
+	border-radius: 999px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--cedra-ink) !important;
+}
+
+.cedra-page-surface {
+	border-radius: 32px;
+	padding: 40px;
+}
+
+/* WooCommerce Forms, Buttons, Inputs & Blocks Harmonization */
+.cedra-page-surface input[type="text"],
+.cedra-page-surface input[type="email"],
+.cedra-page-surface input[type="password"],
+.cedra-page-surface input[type="tel"],
+.cedra-page-surface input[type="number"],
+.cedra-page-surface select,
+.cedra-page-surface textarea,
+.wc-block-components-text-input input,
+.wc-block-components-combobox .wc-block-components-combobox-control input {
+	border-radius: 14px !important;
+	border: 1px solid rgba(11, 28, 44, 0.14) !important;
+	background: rgba(255, 255, 255, 0.85) !important;
+	color: var(--cedra-ink) !important;
+	font-family: var(--cedra-font-sans) !important;
+	padding: 12px 16px;
+}
+
+.woocommerce .button,
+.woocommerce button.button,
+.woocommerce a.button,
+.woocommerce input.button,
+.wc-block-components-button,
+.wp-element-button {
+	border-radius: 999px !important;
+	background: var(--cedra-ink) !important;
+	color: #FFFFFF !important;
+	border: 0 !important;
+	font-family: var(--cedra-font-sans) !important;
+	font-weight: 500 !important;
+	padding: 13px 26px !important;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.woocommerce button.button.alt,
+.woocommerce a.button.alt,
+.wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button {
+	background: var(--cedra-accent) !important;
+	color: #FFFFFF !important;
+	box-shadow: 0 12px 28px -12px rgba(112, 36, 171, 0.75) !important;
+}
+
+.woocommerce .button:hover,
+.wc-block-components-button:hover,
+.wp-element-button:hover {
+	background: var(--cedra-accent-hover) !important;
+	color: #FFFFFF !important;
+}
+
+/* My Account Navigation & Columns */
+.woocommerce-account .woocommerce {
+	display: grid;
+	grid-template-columns: 240px minmax(0, 1fr);
+	gap: 28px;
+	align-items: start;
+}
+
+.woocommerce-account .woocommerce:has(#customer_login) {
+	display: block;
+}
+
+.woocommerce-MyAccount-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 12px;
+	border-radius: 22px;
+	background: rgba(255, 255, 255, 0.65);
+	border: 1px solid rgba(255, 255, 255, 0.85);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.woocommerce-MyAccount-navigation li a {
+	display: block;
+	padding: 10px 16px;
+	border-radius: 999px;
+	color: var(--cedra-ink);
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.woocommerce-MyAccount-navigation li.is-active a {
+	background: var(--cedra-ink);
+	color: #FFFFFF;
+}
+
+#customer_login {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 28px;
+}
+
+#customer_login h2 {
+	margin-top: 0;
+	font-size: 26px;
+	letter-spacing: -0.03em;
+}
+
+.woocommerce-form-row {
+	margin: 0 0 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.woocommerce-form-row label {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--cedra-ink-soft);
+}
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+	border-radius: 18px !important;
+	background: rgba(255, 255, 255, 0.85) !important;
+	border: 1px solid rgba(112, 36, 171, 0.25) !important;
+	padding: 14px 20px !important;
+	margin-bottom: 20px !important;
+	color: var(--cedra-ink) !important;
+}
+
+/* 404 Card */
+.cedra-404__card {
+	border-radius: 36px;
+	padding: 56px 48px;
+	max-width: 780px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.cedra-404__title {
+	margin: 0;
+	font-size: clamp(42px, 6vw, 72px);
+	line-height: 0.98;
+	letter-spacing: -0.045em;
+	font-weight: 600;
+}
+
+.cedra-404__desc {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--cedra-ink-soft);
+	max-width: 560px;
+}
+
+.cedra-404__search {
+	width: 100%;
+}
+
+.cedra-404__actions {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+	.cedra-pdp {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.cedra-pdp__summary,
+	.cedra-page-surface,
+	.cedra-404__card {
+		padding: 24px;
+	}
+	.woocommerce-account .woocommerce {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.cedra-pdp__trust {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
