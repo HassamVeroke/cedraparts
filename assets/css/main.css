@@ -295,11 +295,17 @@ summary:focus-visible {
 	display: flex;
 	align-items: center;
 	flex: 0 0 auto;
+	height: 40px;
+	max-width: 160px;
 }
 
-.cedra-header__logo {
+.cedra-header img.cedra-header__logo,
+img.cedra-header__logo {
 	height: 40px;
+	max-height: 40px;
 	width: auto;
+	max-width: 160px;
+	object-fit: contain;
 	display: block;
 }
 
@@ -548,6 +554,7 @@ summary:focus-visible {
 	overflow: hidden;
 }
 
+.cedra-carousel img.slide__spotlight-img,
 .slide__spotlight-img {
 	max-width: 82%;
 	max-height: 210px;
@@ -880,6 +887,7 @@ summary:focus-visible {
 	color: var(--cedra-accent);
 }
 
+.tile img.tile__img--cat,
 .tile__img--cat {
 	width: 78%;
 	max-height: 84%;
@@ -896,6 +904,7 @@ summary:focus-visible {
 	place-items: center;
 }
 
+.tile img.tile__img--brand,
 .tile__img--brand {
 	width: auto;
 	max-width: 78%;
@@ -1606,10 +1615,15 @@ details[open] .chev {
 	gap: 14px;
 }
 
-.cedra-footer__logo {
+.cedra-footer img.cedra-footer__logo,
+img.cedra-footer__logo {
 	height: 36px;
+	max-height: 36px;
 	width: auto;
+	max-width: 150px;
+	object-fit: contain;
 	align-self: flex-start;
+	display: block;
 	filter: brightness(0) invert(1);
 }
 
@@ -2024,8 +2038,16 @@ details[open] .chev {
 		gap: 12px;
 	}
 
-	.cedra-header__logo {
+	.cedra-header__brand {
 		height: 34px;
+		max-width: 132px;
+	}
+
+	.cedra-header img.cedra-header__logo,
+	img.cedra-header__logo {
+		height: 34px;
+		max-height: 34px;
+		max-width: 132px;
 	}
 
 	.cedra-header__quote {

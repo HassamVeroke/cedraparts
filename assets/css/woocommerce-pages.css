@@ -67,6 +67,7 @@
 	place-items: center;
 }
 
+.cedra-pdp img.cedra-pdp__photo,
 .cedra-pdp__photo {
 	max-width: 86%;
 	max-height: 360px;

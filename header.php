@@ -61,9 +61,9 @@ $support_href = '#support';
 				$custom_logo_id = get_theme_mod( 'custom_logo' );
 				$custom_src     = $custom_logo_id ? wp_get_attachment_image_url( $custom_logo_id, 'full' ) : '';
 				?>
-				<img src="<?php echo esc_url( $custom_src ? $custom_src : $logo_src ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="cedra-header__logo">
+				<img src="<?php echo esc_url( $custom_src ? $custom_src : $logo_src ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="91" height="40" class="cedra-header__logo">
 			<?php else : ?>
-				<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Cedra Parts', 'cedraparts' ); ?>" class="cedra-header__logo">
+				<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Cedra Parts', 'cedraparts' ); ?>" width="91" height="40" class="cedra-header__logo">
 			<?php endif; ?>
 		</a>
 

@@ -32,7 +32,7 @@ $logo_src      = CEDRA_THEME_URI . '/assets/images/cedra-logo.webp';
 <footer id="contact" class="cedra-footer">
 	<div class="wrap foot">
 		<div class="cedra-footer__brand">
-			<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Cedra Parts', 'cedraparts' ); ?>" class="cedra-footer__logo">
+			<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Cedra Parts', 'cedraparts' ); ?>" width="82" height="36" class="cedra-footer__logo">
 			<p class="cedra-footer__desc">
 				<?php esc_html_e( "Canada's dedicated aftermarket parts specialist, exclusively focused on the Power Generation sector.", 'cedraparts' ); ?>
 			</p>
