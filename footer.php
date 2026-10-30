@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme Footer — Rounded Dark Navy Bento Grid, Live ET Hours, Giant Watermark & Copyright
+ * Theme Footer: 4-Column Dark Navy Industrial Footer (Option 2 Design)
  *
  * @package CedraParts
  */
@@ -9,142 +9,118 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$sales_email   = cedra_get_option( 'sales_email' );
-$phone_display = cedra_get_option( 'sales_phone_display' );
-$phone_href    = cedra_get_option( 'sales_phone_href' );
-$quote_url     = cedra_get_option( 'quote_url' );
+$shop_url      = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
 $home_url      = cedra_get_option( 'home_url' );
 $about_url     = cedra_get_option( 'about_url' );
 $contact_url   = cedra_get_option( 'contact_url' );
-$shop_url      = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/' );
-$address_line1 = cedra_get_option( 'address_line1' );
-$address_line2 = cedra_get_option( 'address_line2' );
-$hours_weekday = cedra_get_option( 'hours_weekday' );
-$hours_weekend = cedra_get_option( 'hours_weekend' );
+$quote_url     = cedra_get_option( 'quote_url' );
+$sales_email   = cedra_get_option( 'sales_email' );
+$phone_disp    = cedra_get_option( 'sales_phone_display' );
+$phone_href    = cedra_get_option( 'sales_phone_href' );
+$address_line  = cedra_get_option( 'address_line' );
+$hours_line    = cedra_get_option( 'hours_line' );
 $hq_line       = cedra_get_option( 'footer_hq_line' );
-$et_status     = cedra_get_et_status();
-$logo_url      = CEDRA_THEME_URI . '/assets/images/cedra-logo.webp';
-$custom_logo   = get_theme_mod( 'custom_logo' );
-if ( $custom_logo ) {
-	$custom_logo_src = wp_get_attachment_image_url( $custom_logo, 'full' );
-	if ( $custom_logo_src ) {
-		$logo_url = $custom_logo_src;
-	}
-}
+$linkedin_url  = cedra_get_option( 'linkedin_url' );
+$facebook_url  = cedra_get_option( 'facebook_url' );
+$instagram_url = cedra_get_option( 'instagram_url' );
+$youtube_url   = cedra_get_option( 'youtube_url' );
+$logo_src      = CEDRA_THEME_URI . '/assets/images/cedra-logo.webp';
 ?>
-	</main><!-- #main-content -->
+</main>
 
-	<!-- Footer -->
-	<footer id="contact" class="cedra-footer">
-		<div class="orb cedra-footer__orb" aria-hidden="true"></div>
-		<div class="wrap cedra-footer__inner">
-
-			<!-- Footer headline -->
-			<div class="cedra-footer__hero">
-				<h2 class="h1 cedra-footer__headline">
-					<?php esc_html_e( 'Keeping critical', 'cedraparts' ); ?><br>
-					<?php esc_html_e( 'power', 'cedraparts' ); ?>
-					<span class="cedra-footer__serif"><?php esc_html_e( 'ready.', 'cedraparts' ); ?></span>
-				</h2>
-				<div class="cedra-footer__cta-group">
-					<a href="<?php echo esc_url( $quote_url ); ?>" class="cedra-btn cedra-btn--accent cedra-btn--lg">
-						<?php esc_html_e( 'Get a Quote', 'cedraparts' ); ?> <span aria-hidden="true">↗</span>
-					</a>
-					<?php if ( $sales_email ) : ?>
-						<a href="mailto:<?php echo esc_attr( $sales_email ); ?>" class="glass-dark cedra-btn cedra-btn--dark-glass cedra-btn--lg">
-							<?php esc_html_e( 'Email sales', 'cedraparts' ); ?>
-						</a>
-					<?php endif; ?>
-				</div>
-			</div>
-
-			<!-- Footer bento -->
-			<div class="foot cedra-footer__bento">
-				<div class="glass-dark span2 cedra-bento-card cedra-bento-card--brand">
-					<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="cedra-footer__logo" loading="lazy">
-					<p class="cedra-footer__mission">
-						<?php esc_html_e( "Canada's dedicated aftermarket parts specialist, exclusively focused on the", 'cedraparts' ); ?>
-						<span class="cedra-footer__serif"><?php esc_html_e( 'Power Generation', 'cedraparts' ); ?></span>
-						<?php esc_html_e( 'sector.', 'cedraparts' ); ?>
-					</p>
-					<nav aria-label="<?php esc_attr_e( 'Footer', 'cedraparts' ); ?>" class="cedra-footer__pills">
-						<a href="<?php echo esc_url( $home_url ); ?>"><?php esc_html_e( 'Home', 'cedraparts' ); ?></a>
-						<a href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Products', 'cedraparts' ); ?></a>
-						<a href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'About Us', 'cedraparts' ); ?></a>
-						<a href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Contact Us', 'cedraparts' ); ?></a>
-					</nav>
-				</div>
-
-				<div class="glass-dark cedra-bento-card">
-					<span class="cedra-footer__label"><?php esc_html_e( 'TALK TO US', 'cedraparts' ); ?></span>
-					<?php if ( $sales_email ) : ?>
-						<a href="mailto:<?php echo esc_attr( $sales_email ); ?>" class="cedra-footer__contact-row">
-							<span class="cedra-footer__icon-box">
-								<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-									<rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="#D6C1EF" stroke-width="1.6"></rect>
-									<path d="M4 7l8 6 8-6" fill="none" stroke="#D6C1EF" stroke-width="1.6" stroke-linejoin="round"></path>
-								</svg>
-							</span>
-							<span><?php echo esc_html( $sales_email ); ?></span>
-						</a>
-					<?php endif; ?>
-					<?php if ( $phone_display ) : ?>
-						<a href="tel:<?php echo esc_attr( $phone_href ); ?>" class="cedra-footer__contact-row">
-							<span class="cedra-footer__icon-box">
-								<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-									<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z" fill="none" stroke="#D6C1EF" stroke-width="1.6" stroke-linejoin="round"></path>
-								</svg>
-							</span>
-							<span class="cedra-mono"><?php echo esc_html( $phone_display ); ?></span>
-						</a>
-					<?php endif; ?>
-					<p class="cedra-footer__subnote">
-						<?php esc_html_e( 'Emergency parts support for critical infrastructure clients.', 'cedraparts' ); ?>
-					</p>
-				</div>
-
-				<div class="glass-dark cedra-bento-card cedra-bento-card--hours">
-					<div class="cedra-footer__hours-top">
-						<span class="cedra-footer__label"><?php esc_html_e( 'HOURS (ET)', 'cedraparts' ); ?></span>
-						<span class="cedra-open-pill js-et-status-pill">
-							<span class="cedra-open-pill__dot js-et-status-dot" style="background: <?php echo esc_attr( $et_status['dot'] ); ?>"></span>
-							<span class="js-et-status-label"><?php echo esc_html( $et_status['label'] ); ?></span>
-						</span>
-					</div>
-					<div class="cedra-footer__hours-row cedra-footer__hours-row--active">
-						<span><?php esc_html_e( 'Mon – Fri', 'cedraparts' ); ?></span>
-						<span><?php echo esc_html( $hours_weekday ); ?></span>
-					</div>
-					<div class="cedra-footer__hours-row">
-						<span><?php esc_html_e( 'Sat – Sun', 'cedraparts' ); ?></span>
-						<span><?php echo esc_html( $hours_weekend ); ?></span>
-					</div>
-					<div class="cedra-footer__address">
-						<?php echo esc_html( $address_line1 ); ?><br>
-						<?php echo esc_html( $address_line2 ); ?>
-					</div>
-				</div>
-			</div>
-
-			<!-- Giant watermark -->
-			<div class="cedra-footer__watermark" aria-hidden="true">
-				<img src="<?php echo esc_url( $logo_url ); ?>" alt="" loading="lazy">
-			</div>
-
-			<!-- Copyright bar -->
-			<div class="cedra-footer__bottom">
-				<span>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Cedra Parts Inc. <?php esc_html_e( 'All Rights Reserved.', 'cedraparts' ); ?></span>
-				<span class="hide-m"><?php echo esc_html( $hq_line ); ?></span>
-				<a href="#top" class="glass-dark cedra-back-top">
-					<?php esc_html_e( 'Back to top', 'cedraparts' ); ?> <span aria-hidden="true">↑</span>
+<!-- Footer -->
+<footer id="contact" class="cedra-footer">
+	<div class="wrap foot">
+		<div class="cedra-footer__brand">
+			<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Cedra Parts', 'cedraparts' ); ?>" class="cedra-footer__logo">
+			<p class="cedra-footer__desc">
+				<?php esc_html_e( "Canada's dedicated aftermarket parts specialist, exclusively focused on the Power Generation sector.", 'cedraparts' ); ?>
+			</p>
+			<div class="cedra-footer__socials">
+				<a href="<?php echo esc_url( $linkedin_url ? $linkedin_url : '#linkedin' ); ?>" aria-label="<?php esc_attr_e( 'Cedra Parts on LinkedIn', 'cedraparts' ); ?>" class="cedra-social-btn">
+					<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M5 9v10M5 5.5v.5M10 19v-6a3 3 0 0 1 6 0v6M10 9v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+					</svg>
+				</a>
+				<a href="<?php echo esc_url( $facebook_url ? $facebook_url : '#facebook' ); ?>" aria-label="<?php esc_attr_e( 'Cedra Parts on Facebook', 'cedraparts' ); ?>" class="cedra-social-btn">
+					<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M14 21v-8h3l.5-3.5H14V7.5c0-1 .4-1.7 1.8-1.7H18V2.6c-.4-.1-1.6-.2-2.9-.2-2.9 0-4.6 1.7-4.6 4.8v2.3H7.5V13h3v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+					</svg>
+				</a>
+				<a href="<?php echo esc_url( $instagram_url ? $instagram_url : '#instagram' ); ?>" aria-label="<?php esc_attr_e( 'Cedra Parts on Instagram', 'cedraparts' ); ?>" class="cedra-social-btn">
+					<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"></rect>
+						<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+						<circle cx="17.2" cy="6.8" r="1" fill="currentColor"></circle>
+					</svg>
+				</a>
+				<a href="<?php echo esc_url( $youtube_url ? $youtube_url : '#youtube' ); ?>" aria-label="<?php esc_attr_e( 'Cedra Parts on YouTube', 'cedraparts' ); ?>" class="cedra-social-btn">
+					<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"></rect>
+						<path d="M10 9.5v5l4.5-2.5z" fill="currentColor"></path>
+					</svg>
 				</a>
 			</div>
 		</div>
-	</footer>
 
-</div><!-- .cedra-site-shell -->
+		<div>
+			<div class="cedra-footer__heading"><?php esc_html_e( 'Shop', 'cedraparts' ); ?></div>
+			<ul class="cedra-footer__list">
+				<li><a href="<?php echo esc_url( $shop_url . '#results' ); ?>" class="js-pick-cat" data-cat="all"><?php esc_html_e( 'All parts', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( add_query_arg( 'cats', 'generator-controllers', $shop_url ) . '#results' ); ?>" class="js-pick-cat" data-cat="generator-controllers"><?php esc_html_e( 'Generator Controllers', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( add_query_arg( 'cats', 'battery-chargers', $shop_url ) . '#results' ); ?>" class="js-pick-cat" data-cat="battery-chargers"><?php esc_html_e( 'Battery Chargers', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( add_query_arg( 'cats', 'engine-parts', $shop_url ) . '#results' ); ?>" class="js-pick-cat" data-cat="engine-parts"><?php esc_html_e( 'Engine Parts', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( $shop_url . '#shop' ); ?>" class="js-show-brands"><?php esc_html_e( 'Shop by brand', 'cedraparts' ); ?></a></li>
+			</ul>
+		</div>
+
+		<div>
+			<div class="cedra-footer__heading"><?php esc_html_e( 'Company', 'cedraparts' ); ?></div>
+			<ul class="cedra-footer__list">
+				<li><a href="<?php echo esc_url( $home_url ); ?>"><?php esc_html_e( 'Home', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'About Us', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Contact Us', 'cedraparts' ); ?></a></li>
+				<li><a href="<?php echo esc_url( $quote_url ); ?>"><?php esc_html_e( 'Get a Quote', 'cedraparts' ); ?></a></li>
+			</ul>
+		</div>
+
+		<div>
+			<div class="cedra-footer__heading"><?php esc_html_e( 'Contact', 'cedraparts' ); ?></div>
+			<ul class="cedra-footer__list cedra-footer__list--contact">
+				<?php if ( $sales_email ) : ?>
+					<li><a href="mailto:<?php echo esc_attr( $sales_email ); ?>"><?php echo esc_html( $sales_email ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $phone_disp ) : ?>
+					<li><a href="tel:<?php echo esc_attr( $phone_href ); ?>"><?php echo esc_html( $phone_disp ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $address_line ) : ?>
+					<li><?php echo esc_html( $address_line ); ?></li>
+				<?php endif; ?>
+				<?php if ( $hours_line ) : ?>
+					<li><?php echo esc_html( $hours_line ); ?></li>
+				<?php endif; ?>
+			</ul>
+		</div>
+	</div>
+
+	<div class="cedra-footer__bottom">
+		<div class="wrap cedra-footer__bottom-inner">
+			<span>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: %s: current year */
+						__( '© %s Cedra Parts Inc. All Rights Reserved.', 'cedraparts' ),
+						gmdate( 'Y' )
+					)
+				);
+				?>
+			</span>
+			<span><?php echo esc_html( $hq_line ); ?></span>
+		</div>
+	</div>
+</footer>
 
 <?php wp_footer(); ?>
 </body>
 </html>
-

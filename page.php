@@ -16,13 +16,13 @@ $is_cart  = function_exists( 'is_cart' ) && is_cart();
 $is_chk   = function_exists( 'is_checkout' ) && is_checkout();
 $is_acct  = function_exists( 'is_account_page' ) && is_account_page();
 
-$eyebrow = __( 'CEDRA PARTS', 'cedraparts' );
+$eyebrow = __( 'Cedra Parts', 'cedraparts' );
 if ( $is_cart ) {
-	$eyebrow = __( 'ORDER SUMMARY', 'cedraparts' );
+	$eyebrow = __( 'Order summary', 'cedraparts' );
 } elseif ( $is_chk ) {
-	$eyebrow = __( 'SECURE CHECKOUT', 'cedraparts' );
+	$eyebrow = __( 'Secure checkout', 'cedraparts' );
 } elseif ( $is_acct ) {
-	$eyebrow = __( 'CUSTOMER PORTAL', 'cedraparts' );
+	$eyebrow = __( 'Customer portal', 'cedraparts' );
 }
 
 while ( have_posts() ) :
@@ -31,19 +31,16 @@ while ( have_posts() ) :
 	<section class="cedra-page-section">
 		<div class="wrap">
 			<div class="cedra-page-head">
-				<div class="glass cedra-eyebrow-pill">
-					<span class="cedra-pulse-dot" aria-hidden="true"></span>
-					<?php echo esc_html( $eyebrow ); ?>
-				</div>
+				<span class="cedra-eyebrow"><?php echo esc_html( $eyebrow ); ?></span>
 				<div class="cedra-page-head__row">
 					<h1 class="cedra-page-title"><?php the_title(); ?></h1>
-					<a href="<?php echo esc_url( $shop_url ); ?>" class="glass pill cedra-back-catalog">
-						← <?php esc_html_e( 'Continue browsing parts', 'cedraparts' ); ?>
+					<a href="<?php echo esc_url( $shop_url . '#results' ); ?>" class="cedra-view-all">
+						<span aria-hidden="true">←</span> <?php esc_html_e( 'Continue shopping', 'cedraparts' ); ?>
 					</a>
 				</div>
 			</div>
 
-			<div class="glass-strong cedra-page-surface">
+			<div class="cedra-page-surface">
 				<?php the_content(); ?>
 			</div>
 		</div>
@@ -56,4 +53,3 @@ if ( ! $is_chk ) {
 }
 
 get_footer();
-

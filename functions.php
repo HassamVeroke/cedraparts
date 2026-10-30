@@ -1,6 +1,6 @@
 <?php
 /**
- * Cedra Parts Theme Functions & Definitions
+ * Cedra Parts Theme Functions & Definitions (Option 2 Design)
  *
  * @package CedraParts
  */
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CEDRA_THEME_VERSION', '1.0.0' );
+define( 'CEDRA_THEME_VERSION', '1.1.0' );
 define( 'CEDRA_THEME_DIR', get_template_directory() );
 define( 'CEDRA_THEME_URI', get_template_directory_uri() );
 
@@ -74,8 +74,8 @@ function cedra_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary Floating Glass Menu', 'cedraparts' ),
-			'footer'  => __( 'Footer Bento Menu', 'cedraparts' ),
+			'primary' => __( 'Primary Header Navigation', 'cedraparts' ),
+			'footer'  => __( 'Footer Navigation', 'cedraparts' ),
 		)
 	);
 }
@@ -106,7 +106,7 @@ add_filter( 'wp_resource_hints', 'cedra_resource_hints', 10, 2 );
 function cedra_enqueue_assets() {
 	wp_enqueue_style(
 		'cedra-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap',
+		'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap',
 		array(),
 		null
 	);
@@ -150,27 +150,27 @@ function cedra_enqueue_assets() {
 		'cedra-main',
 		'CedraConfig',
 		array(
-			'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
-			'nonce'     => wp_create_nonce( 'cedra_nonce' ),
-			'shopUrl'   => $shop_url,
-			'cartUrl'   => $cart_url,
+			'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
+			'nonce'       => wp_create_nonce( 'cedra_nonce' ),
+			'shopUrl'     => $shop_url,
+			'cartUrl'     => $cart_url,
 			'checkoutUrl' => $chk_url,
-			'spotlight' => (bool) cedra_get_option( 'enable_spotlight' ),
-			'perPage'   => cedra_catalog_per_page(),
+			'quoteUrl'    => cedra_get_option( 'quote_url' ),
+			'autoplay'    => (bool) cedra_get_option( 'carousel_autoplay' ),
+			'perPage'     => cedra_catalog_per_page(),
 		)
 	);
 }
 add_action( 'wp_enqueue_scripts', 'cedra_enqueue_assets', 20 );
 
 /**
- * Add helpful body classes for Cedra frosted-glass styling.
+ * Add theme identifier body class.
  *
  * @param array<int, string> $classes Body classes.
  * @return array<int, string>
  */
 function cedra_body_classes( $classes ) {
-	$classes[] = 'cedra-glass-theme';
+	$classes[] = 'cedra-theme';
 	return $classes;
 }
 add_filter( 'body_class', 'cedra_body_classes' );
-

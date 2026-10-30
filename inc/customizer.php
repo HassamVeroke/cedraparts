@@ -1,6 +1,6 @@
 <?php
 /**
- * Cedra Parts Customizer Settings & Theme Defaults
+ * Cedra Parts Customizer Settings & Theme Defaults (Option 2 Design)
  *
  * @package CedraParts
  */
@@ -17,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function cedra_get_option_defaults() {
 	return array(
 		'accent_color'         => '#7024AB',
-		'enable_spotlight'     => true,
+		'carousel_autoplay'    => true,
 		'use_svg_fallback'     => true,
 		'strip_trailing_sku'   => true,
-		'top_tagline'          => "Canada's Dedicated Power Gen Parts Specialist",
+		'top_tagline'          => "Canada's dedicated power gen parts specialist",
 		'sales_email'          => 'sales@cedraparts.com',
 		'sales_phone_display'  => '+1 (289) 337-2541',
 		'sales_phone_href'     => '+12893372541',
@@ -28,18 +28,13 @@ function cedra_get_option_defaults() {
 		'about_url'            => 'https://cedraparts.com/about',
 		'contact_url'          => 'https://cedraparts.com/contact',
 		'quote_url'            => 'https://cedraparts.com/contact',
-		'hero_eyebrow'         => 'Product Catalog',
-		'hero_title_line1'     => 'Power Gen Parts',
-		'hero_title_serif'     => '& Components',
-		'hero_badge_ring'      => 'POWER GEN EXCLUSIVE · BEAMSVILLE, ONTARIO · ',
-		'hero_description'     => 'Browse our comprehensive inventory of aftermarket parts for all major genset engine brands. Genset spare parts, filters, consumables, PM kits, electrical, and more.',
-		'distributor_label'    => 'Authorized Canadian Distributor',
-		'address_line1'        => '5005 King Street, Beamsville,',
-		'address_line2'        => 'Ontario L0R 1B0, Canada',
-		'hours_weekday'        => '9 am – 5 pm',
-		'hours_weekend'        => 'Closed',
-		'emergency_notice'     => 'Emergency parts support available for critical infrastructure clients. Contact us for priority service.',
+		'address_line'         => '5005 King Street, Beamsville, ON L0R 1B0',
+		'hours_line'           => 'Mon – Fri, 9 am – 5 pm',
 		'footer_hq_line'       => 'Headquarters & Distribution — Beamsville, Ontario, Canada',
+		'linkedin_url'         => '#',
+		'facebook_url'         => '#',
+		'instagram_url'        => '#',
+		'youtube_url'          => '#',
 	);
 }
 
@@ -63,12 +58,12 @@ function cedra_get_option( $key ) {
 function cedra_customize_register( $wp_customize ) {
 	$defaults = cedra_get_option_defaults();
 
-	// Section: Visual & Brand Appearance.
+	// Section: Visual & Catalog Preferences.
 	$wp_customize->add_section(
 		'cedra_appearance_section',
 		array(
-			'title'       => __( 'Cedra Glass Design & Brand', 'cedraparts' ),
-			'description' => __( 'Configure accent color, interactive hero spotlight, and artwork preferences.', 'cedraparts' ),
+			'title'       => __( 'Cedra Theme & Catalog Options', 'cedraparts' ),
+			'description' => __( 'Configure accent color, hero carousel autoplay, and catalog card display.', 'cedraparts' ),
 			'priority'    => 25,
 		)
 	);
@@ -93,16 +88,16 @@ function cedra_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-		'cedra_enable_spotlight',
+		'cedra_carousel_autoplay',
 		array(
-			'default'           => $defaults['enable_spotlight'],
+			'default'           => $defaults['carousel_autoplay'],
 			'sanitize_callback' => 'rest_sanitize_boolean',
 		)
 	);
 	$wp_customize->add_control(
-		'cedra_enable_spotlight',
+		'cedra_carousel_autoplay',
 		array(
-			'label'   => __( 'Enable Hero Cursor Spotlight Glow', 'cedraparts' ),
+			'label'   => __( 'Autoplay Hero Carousel (7s interval)', 'cedraparts' ),
 			'section' => 'cedra_appearance_section',
 			'type'    => 'checkbox',
 		)
@@ -119,7 +114,7 @@ function cedra_customize_register( $wp_customize ) {
 		'cedra_use_svg_fallback',
 		array(
 			'label'       => __( 'Use Technical Vector Art When Product Photo Is Unavailable', 'cedraparts' ),
-			'description' => __( 'Replaces generic "Image Not Available" placeholders with category-matched vector illustrations.', 'cedraparts' ),
+			'description' => __( 'Replaces generic "Image Not Available" placeholders with category-matched technical vector illustrations.', 'cedraparts' ),
 			'section'     => 'cedra_appearance_section',
 			'type'        => 'checkbox',
 		)
@@ -136,23 +131,23 @@ function cedra_customize_register( $wp_customize ) {
 		'cedra_strip_trailing_sku',
 		array(
 			'label'       => __( 'Clean Redundant Trailing (SKU) from Card Titles', 'cedraparts' ),
-			'description' => __( 'Since SKU is displayed in the top-left badge on cards, removes duplicate trailing (SKU) suffixes.', 'cedraparts' ),
+			'description' => __( 'Since SKU is displayed in the card header row, removes duplicate trailing (SKU) suffixes.', 'cedraparts' ),
 			'section'     => 'cedra_appearance_section',
 			'type'        => 'checkbox',
 		)
 	);
 
-	// Section: Contact, Navigation Links & Business Details.
+	// Section: Contact, Links & Socials.
 	$wp_customize->add_section(
 		'cedra_contact_section',
 		array(
-			'title'    => __( 'Cedra Contact, Links & Hours', 'cedraparts' ),
+			'title'    => __( 'Cedra Contact, Links & Socials', 'cedraparts' ),
 			'priority' => 26,
 		)
 	);
 
 	$text_fields = array(
-		'top_tagline'         => __( 'Top Bar Tagline', 'cedraparts' ),
+		'top_tagline'         => __( 'Utility Bar Tagline', 'cedraparts' ),
 		'sales_email'         => __( 'Sales Email Address', 'cedraparts' ),
 		'sales_phone_display' => __( 'Phone Number (Display)', 'cedraparts' ),
 		'sales_phone_href'    => __( 'Phone Number (tel: Link)', 'cedraparts' ),
@@ -160,12 +155,13 @@ function cedra_customize_register( $wp_customize ) {
 		'about_url'           => __( 'About Us URL', 'cedraparts' ),
 		'contact_url'         => __( 'Contact Us URL', 'cedraparts' ),
 		'quote_url'           => __( 'Get a Quote URL', 'cedraparts' ),
-		'address_line1'       => __( 'Address Line 1', 'cedraparts' ),
-		'address_line2'       => __( 'Address Line 2', 'cedraparts' ),
-		'hours_weekday'       => __( 'Mon – Fri Hours (ET)', 'cedraparts' ),
-		'hours_weekend'       => __( 'Sat – Sun Hours (ET)', 'cedraparts' ),
-		'emergency_notice'    => __( 'Emergency Support Notice', 'cedraparts' ),
+		'address_line'        => __( 'Footer Address Line', 'cedraparts' ),
+		'hours_line'          => __( 'Footer Business Hours Line', 'cedraparts' ),
 		'footer_hq_line'      => __( 'Footer Bottom Location Line', 'cedraparts' ),
+		'linkedin_url'        => __( 'LinkedIn URL', 'cedraparts' ),
+		'facebook_url'        => __( 'Facebook URL', 'cedraparts' ),
+		'instagram_url'       => __( 'Instagram URL', 'cedraparts' ),
+		'youtube_url'         => __( 'YouTube URL', 'cedraparts' ),
 	);
 
 	foreach ( $text_fields as $field_key => $label ) {
@@ -189,42 +185,5 @@ function cedra_customize_register( $wp_customize ) {
 			)
 		);
 	}
-
-	// Section: Catalog Hero Copy.
-	$wp_customize->add_section(
-		'cedra_hero_section',
-		array(
-			'title'    => __( 'Cedra Catalog Hero Content', 'cedraparts' ),
-			'priority' => 27,
-		)
-	);
-
-	$hero_fields = array(
-		'hero_eyebrow'       => array( __( 'Eyebrow Badge Text', 'cedraparts' ), 'text' ),
-		'hero_title_line1'   => array( __( 'Hero Heading (Main Line)', 'cedraparts' ), 'text' ),
-		'hero_title_serif'   => array( __( 'Hero Heading (Italic Serif Line)', 'cedraparts' ), 'text' ),
-		'hero_badge_ring'    => array( __( 'Rotating Seal Ring Text', 'cedraparts' ), 'text' ),
-		'hero_description'   => array( __( 'Hero Description Paragraph', 'cedraparts' ), 'textarea' ),
-		'distributor_label'  => array( __( 'Logo Marquee Label', 'cedraparts' ), 'text' ),
-	);
-
-	foreach ( $hero_fields as $field_key => $cfg ) {
-		$wp_customize->add_setting(
-			'cedra_' . $field_key,
-			array(
-				'default'           => $defaults[ $field_key ],
-				'sanitize_callback' => 'textarea' === $cfg[1] ? 'sanitize_textarea_field' : 'sanitize_text_field',
-			)
-		);
-		$wp_customize->add_control(
-			'cedra_' . $field_key,
-			array(
-				'label'   => $cfg[0],
-				'section' => 'cedra_hero_section',
-				'type'    => $cfg[1],
-			)
-		);
-	}
 }
 add_action( 'customize_register', 'cedra_customize_register' );
-

@@ -1,6 +1,6 @@
 <?php
 /**
- * WooCommerce Single Product Template (Option 2 Frosted-Glass Design)
+ * WooCommerce Single Product Template (Option 2 Clean Industrial Design)
  *
  * @package CedraParts
  * @version 1.6.4
@@ -27,17 +27,17 @@ while ( have_posts() ) :
 		continue;
 	}
 
-	$product_id   = $product->get_id();
-	$sku          = trim( (string) $product->get_sku() );
-	$clean_title  = cedra_get_clean_product_title( $product );
-	$price_html   = $product->get_price_html();
-	$in_stock     = $product->is_in_stock();
-	$is_simple    = $product->is_type( 'simple' ) && $product->is_purchasable() && $in_stock;
-	$short_desc   = $product->get_short_description();
-	$full_desc    = $product->get_description();
-	$main_img_id  = cedra_get_real_product_image_id( $product );
-	$gallery_ids  = $product->get_gallery_image_ids();
-	$all_img_ids  = array();
+	$product_id  = $product->get_id();
+	$sku         = trim( (string) $product->get_sku() );
+	$clean_title = cedra_get_clean_product_title( $product );
+	$price_html  = $product->get_price_html();
+	$in_stock    = $product->is_in_stock();
+	$is_simple   = $product->is_type( 'simple' ) && $product->is_purchasable() && $in_stock;
+	$short_desc  = $product->get_short_description();
+	$full_desc   = $product->get_description();
+	$main_img_id = cedra_get_real_product_image_id( $product );
+	$gallery_ids = $product->get_gallery_image_ids();
+	$all_img_ids = array();
 	if ( $main_img_id ) {
 		$all_img_ids[] = $main_img_id;
 	}
@@ -91,38 +91,24 @@ while ( have_posts() ) :
 				</div>
 			<?php endif; ?>
 
-			<!-- Breadcrumb Pill -->
+			<!-- Breadcrumb -->
 			<nav class="cedra-breadcrumb" aria-label="<?php esc_attr_e( 'Breadcrumb', 'cedraparts' ); ?>">
-				<div class="glass cedra-breadcrumb__pill">
-					<a href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Products', 'cedraparts' ); ?></a>
-					<?php if ( $primary_cat ) : ?>
-						<span aria-hidden="true">/</span>
-						<a href="<?php echo esc_url( add_query_arg( 'cat', $primary_cat->slug, $shop_url ) ); ?>">
-							<?php echo esc_html( html_entity_decode( $primary_cat->name, ENT_QUOTES, 'UTF-8' ) ); ?>
-						</a>
-					<?php endif; ?>
+				<a href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Products', 'cedraparts' ); ?></a>
+				<?php if ( $primary_cat ) : ?>
 					<span aria-hidden="true">/</span>
-					<span class="cedra-breadcrumb__current"><?php echo esc_html( $sku ? $sku : $clean_title ); ?></span>
-				</div>
+					<a href="<?php echo esc_url( add_query_arg( 'cats', $primary_cat->slug, $shop_url ) . '#results' ); ?>">
+						<?php echo esc_html( html_entity_decode( $primary_cat->name, ENT_QUOTES, 'UTF-8' ) ); ?>
+					</a>
+				<?php endif; ?>
+				<span aria-hidden="true">/</span>
+				<span class="cedra-breadcrumb__current cedra-mono"><?php echo esc_html( $sku ? $sku : $clean_title ); ?></span>
 			</nav>
 
-			<!-- 2-Column Product Hero -->
+			<!-- 2-Column Product Layout -->
 			<div class="cedra-pdp">
 				<!-- Media Column -->
-				<div class="glass-strong cedra-pdp__media">
+				<div class="cedra-pdp__media">
 					<div class="cedra-pdp__stage">
-						<?php if ( '' !== $sku ) : ?>
-							<span class="cedra-card__sku"><?php echo esc_html( 'SKU · ' . $sku ); ?></span>
-						<?php endif; ?>
-						<?php if ( $brand_term ) : ?>
-							<a
-								href="<?php echo esc_url( add_query_arg( 'brand', $brand_term->slug, $shop_url ) ); ?>"
-								class="cedra-pdp__brand-chip"
-							>
-								<?php echo esc_html( html_entity_decode( $brand_term->name, ENT_QUOTES, 'UTF-8' ) ); ?>
-							</a>
-						<?php endif; ?>
-
 						<div class="cedra-pdp__main-art js-pdp-main-art">
 							<?php
 							if ( $main_img_id ) {
@@ -165,16 +151,15 @@ while ( have_posts() ) :
 				</div>
 
 				<!-- Summary / Buy Box Column -->
-				<div class="glass-strong cedra-pdp__summary">
+				<div class="cedra-pdp__summary">
 					<div class="cedra-pdp__badges">
 						<?php if ( $primary_cat ) : ?>
-							<a href="<?php echo esc_url( add_query_arg( 'cat', $primary_cat->slug, $shop_url ) ); ?>" class="glass cedra-eyebrow-pill cedra-eyebrow-pill--sm">
-								<span class="cedra-pulse-dot" aria-hidden="true"></span>
+							<a href="<?php echo esc_url( add_query_arg( 'cats', $primary_cat->slug, $shop_url ) . '#results' ); ?>" class="cedra-pdp__cat-chip">
 								<?php echo esc_html( html_entity_decode( $primary_cat->name, ENT_QUOTES, 'UTF-8' ) ); ?>
 							</a>
 						<?php endif; ?>
 
-						<span class="glass cedra-stock-pill<?php echo $in_stock ? ' is-instock' : ' is-out'; ?>">
+						<span class="cedra-stock-pill<?php echo $in_stock ? ' is-instock' : ' is-out'; ?>">
 							<span class="cedra-stock-pill__dot" aria-hidden="true"></span>
 							<?php
 							if ( $in_stock ) {
@@ -194,18 +179,23 @@ while ( have_posts() ) :
 								<span><?php esc_html_e( 'Part No.', 'cedraparts' ); ?> <strong class="cedra-mono"><?php echo esc_html( $sku ); ?></strong></span>
 							<?php endif; ?>
 							<?php if ( $brand_term ) : ?>
-								<span><?php esc_html_e( 'Manufacturer:', 'cedraparts' ); ?> <strong><?php echo esc_html( html_entity_decode( $brand_term->name, ENT_QUOTES, 'UTF-8' ) ); ?></strong></span>
+								<span>
+									<?php esc_html_e( 'Brand:', 'cedraparts' ); ?>
+									<a href="<?php echo esc_url( add_query_arg( 'brands', $brand_term->slug, $shop_url ) . '#results' ); ?>">
+										<strong><?php echo esc_html( html_entity_decode( $brand_term->name, ENT_QUOTES, 'UTF-8' ) ); ?></strong>
+									</a>
+								</span>
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
 
-					<div class="cedra-pdp__price-box glass">
+					<div class="cedra-pdp__price-box">
 						<div class="cedra-pdp__price">
 							<?php
 							if ( '' !== $price_html ) {
 								echo wp_kses_post( $price_html );
 							} else {
-								esc_html_e( 'Quote on Request', 'cedraparts' );
+								esc_html_e( 'Quote on request', 'cedraparts' );
 							}
 							?>
 						</div>
@@ -224,7 +214,7 @@ while ( have_posts() ) :
 					<?php if ( $is_simple ) : ?>
 						<form class="cedra-pdp__cart-form js-pdp-cart-form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype="multipart/form-data">
 							<div class="cedra-pdp__buy-row">
-								<div class="glass cedra-pdp__qty">
+								<div class="cedra-pdp__qty">
 									<button type="button" class="js-pdp-qty-step" data-step="-1" aria-label="<?php esc_attr_e( 'Decrease quantity', 'cedraparts' ); ?>">−</button>
 									<label for="cedra-pdp-qty" class="sr"><?php esc_html_e( 'Quantity', 'cedraparts' ); ?></label>
 									<input
@@ -247,12 +237,9 @@ while ( have_posts() ) :
 									name="add-to-cart"
 									value="<?php echo esc_attr( (string) $product_id ); ?>"
 									data-product-id="<?php echo esc_attr( (string) $product_id ); ?>"
-									class="cedra-btn cedra-btn--accent cedra-btn--lg cedra-pdp__add-btn js-pdp-ajax-add"
+									class="cedra-btn cedra-btn--accent cedra-btn--46 cedra-pdp__add-btn js-pdp-ajax-add"
 								>
-									<span><?php esc_html_e( 'Add to Cart', 'cedraparts' ); ?></span>
-									<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-										<path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
-									</svg>
+									<?php esc_html_e( 'Add to cart', 'cedraparts' ); ?>
 								</button>
 							</div>
 						</form>
@@ -263,48 +250,42 @@ while ( have_posts() ) :
 					<?php endif; ?>
 
 					<div class="cedra-pdp__secondary-actions">
-						<a href="<?php echo esc_url( $quote_with_part ); ?>" class="glass cedra-btn cedra-btn--glass">
-							<?php esc_html_e( 'Request Bulk / Fleet Quote', 'cedraparts' ); ?> <span aria-hidden="true">↗</span>
+						<a href="<?php echo esc_url( $quote_with_part ); ?>" class="cedra-btn cedra-btn--outline">
+							<?php esc_html_e( 'Request volume pricing', 'cedraparts' ); ?>
 						</a>
 						<a href="<?php echo esc_url( $contact_url ); ?>" class="cedra-pdp__text-link">
-							<?php esc_html_e( 'Need cross-reference verification?', 'cedraparts' ); ?>
+							<?php esc_html_e( 'Cross-reference verification →', 'cedraparts' ); ?>
 						</a>
 					</div>
 
 					<div class="cedra-pdp__trust">
-						<div class="glass cedra-pdp__trust-item">
+						<div class="cedra-pdp__trust-item">
 							<strong class="cedra-mono"><?php esc_html_e( 'CANADA-WIDE', 'cedraparts' ); ?></strong>
 							<span><?php esc_html_e( 'Dispatched from Beamsville, ON', 'cedraparts' ); ?></span>
 						</div>
-						<div class="glass cedra-pdp__trust-item">
-							<strong class="cedra-mono"><?php esc_html_e( 'POWER GEN', 'cedraparts' ); ?></strong>
-							<span><?php esc_html_e( 'Industrial genset grade components', 'cedraparts' ); ?></span>
+						<div class="cedra-pdp__trust-item">
+							<strong class="cedra-mono"><?php esc_html_e( 'POWER GEN EXCLUSIVE', 'cedraparts' ); ?></strong>
+							<span><?php esc_html_e( 'Industrial genset components', 'cedraparts' ); ?></span>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<!-- Specifications & Full Description Bento -->
+			<!-- Specifications & Full Description -->
 			<div class="cedra-pdp-details">
 				<?php if ( '' !== trim( $full_desc ) ) : ?>
-					<div class="glass-strong cedra-pdp-details__card">
-						<span class="cedra-eyebrow-mono"><?php esc_html_e( 'TECHNICAL OVERVIEW', 'cedraparts' ); ?></span>
-						<h2 class="cedra-pdp-details__heading">
-							<?php esc_html_e( 'Part', 'cedraparts' ); ?>
-							<span class="cedra-serif-accent"><?php esc_html_e( 'description', 'cedraparts' ); ?></span>
-						</h2>
+					<div class="cedra-pdp-details__card">
+						<span class="cedra-eyebrow"><?php esc_html_e( 'Technical overview', 'cedraparts' ); ?></span>
+						<h2 class="cedra-pdp-details__heading"><?php esc_html_e( 'Part description', 'cedraparts' ); ?></h2>
 						<div class="cedra-prose">
 							<?php echo wp_kses_post( wpautop( $full_desc ) ); ?>
 						</div>
 					</div>
 				<?php endif; ?>
 
-				<div class="glass-strong cedra-pdp-details__card">
-					<span class="cedra-eyebrow-mono"><?php esc_html_e( 'SPECIFICATIONS', 'cedraparts' ); ?></span>
-					<h2 class="cedra-pdp-details__heading">
-						<?php esc_html_e( 'Identification', 'cedraparts' ); ?>
-						<span class="cedra-serif-accent"><?php esc_html_e( '& data', 'cedraparts' ); ?></span>
-					</h2>
+				<div class="cedra-pdp-details__card">
+					<span class="cedra-eyebrow"><?php esc_html_e( 'Specifications', 'cedraparts' ); ?></span>
+					<h2 class="cedra-pdp-details__heading"><?php esc_html_e( 'Identification & data', 'cedraparts' ); ?></h2>
 					<dl class="cedra-spec-list">
 						<?php if ( '' !== $sku ) : ?>
 							<div class="cedra-spec-list__row">
@@ -350,24 +331,19 @@ while ( have_posts() ) :
 			if ( ! empty( $related_ids ) ) :
 				?>
 				<div class="cedra-related">
-					<div class="cedra-catalog__header">
-						<h2 class="cedra-catalog__title">
-							<?php esc_html_e( 'Related', 'cedraparts' ); ?>
-							<span class="cedra-catalog__count"><?php esc_html_e( '— compatible parts', 'cedraparts' ); ?></span>
-						</h2>
-						<a href="<?php echo esc_url( $shop_url ); ?>" class="glass pill cedra-page-pill">
-							<?php esc_html_e( 'VIEW FULL CATALOG →', 'cedraparts' ); ?>
+					<div class="cedra-related__head">
+						<h2 class="cedra-shop-title"><?php esc_html_e( 'Related parts', 'cedraparts' ); ?></h2>
+						<a href="<?php echo esc_url( $shop_url . '#results' ); ?>" class="cedra-view-all">
+							<?php esc_html_e( 'View full catalog', 'cedraparts' ); ?> <span aria-hidden="true">→</span>
 						</a>
 					</div>
 
-					<div class="cedra-grid">
+					<div class="cedra-pgrid">
 						<?php
-						$r_idx = 1;
 						foreach ( $related_ids as $rel_id ) {
 							$rel_product = wc_get_product( $rel_id );
 							if ( $rel_product ) {
-								cedra_render_product_card( $rel_product, $r_idx );
-								++$r_idx;
+								cedra_render_product_card( $rel_product );
 							}
 						}
 						?>
@@ -383,4 +359,3 @@ endwhile;
 get_template_part( 'template-parts/help-band' );
 
 get_footer();
-

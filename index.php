@@ -23,18 +23,21 @@ get_header();
 <section class="cedra-page-section">
 	<div class="wrap">
 		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 				<div class="cedra-page-head">
 					<h1 class="cedra-page-title"><?php the_title(); ?></h1>
 				</div>
-				<div class="glass-strong cedra-page-surface cedra-prose">
+				<div class="cedra-page-surface cedra-prose">
 					<?php the_content(); ?>
 				</div>
 			<?php endwhile; ?>
 		<?php else : ?>
-			<div class="glass-strong cedra-page-surface">
-				<h1><?php esc_html_e( 'Nothing Found', 'cedraparts' ); ?></h1>
-				<p><?php esc_html_e( 'Please search our parts catalog above.', 'cedraparts' ); ?></p>
+			<div class="cedra-page-surface">
+				<h1><?php esc_html_e( 'Nothing found', 'cedraparts' ); ?></h1>
+				<p><?php esc_html_e( 'Please browse or search our parts catalog.', 'cedraparts' ); ?></p>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -42,4 +45,3 @@ get_header();
 <?php
 get_template_part( 'template-parts/help-band' );
 get_footer();
-

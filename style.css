@@ -3,8 +3,8 @@ Theme Name: Cedra Parts
 Theme URI: https://shop.cedraparts.com/
 Author: Cedra Parts Engineering
 Author URI: https://cedraparts.com/
-Description: Custom frosted-glass WooCommerce catalog and e-commerce theme crafted exclusively for Cedra Parts Inc. — Canada's Dedicated Power Generation Parts Specialist. Features ambient glassmorphism UI, instant SKU/brand/category AJAX filtering, live Eastern Time business hours indicator, slide-over glass mini-cart, and full WooCommerce Blocks & classic template support.
-Version: 1.0.0
+Description: Clean industrial WooCommerce catalog and e-commerce theme crafted exclusively for Cedra Parts Inc. — Canada's Dedicated Power Generation Parts Specialist. Features a 4-slide hero showcase with inline OEM part cross-reference, tabbed Categories & Brands visual browser, instant multi-facet AJAX catalog filtering (category, brand, price, DC voltage, SKU search), slide-over mini-cart drawer, and full WooCommerce support.
+Version: 1.1.0
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
@@ -13,6 +13,5 @@ WC tested up to: 11.2
 License: Proprietary
 License URI: https://cedraparts.com/
 Text Domain: cedraparts
-Tags: e-commerce, woocommerce, custom-logo, custom-menu, custom-colors, featured-images, full-width-template, threaded-comments
+Tags: e-commerce, woocommerce, custom-logo, custom-menu, custom-colors, featured-images, full-width-template
 */
-
