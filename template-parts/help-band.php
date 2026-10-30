@@ -69,3 +69,4 @@ $emergency_notice = cedra_get_option( 'emergency_notice' );
 		</div>
 	</div>
 </section>
+

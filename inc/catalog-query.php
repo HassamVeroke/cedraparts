@@ -571,3 +571,4 @@ function cedra_extend_main_product_search( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'cedra_extend_main_product_search' );
+

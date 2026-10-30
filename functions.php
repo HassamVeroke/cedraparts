@@ -173,3 +173,4 @@ function cedra_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'cedra_body_classes' );
+

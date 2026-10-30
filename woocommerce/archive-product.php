@@ -16,3 +16,4 @@ get_template_part( 'template-parts/catalog-view' );
 get_template_part( 'template-parts/help-band' );
 
 get_footer();
+

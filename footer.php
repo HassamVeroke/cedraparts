@@ -147,3 +147,4 @@ if ( $custom_logo ) {
 <?php wp_footer(); ?>
 </body>
 </html>
+

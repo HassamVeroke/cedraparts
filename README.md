@@ -63,3 +63,4 @@ All key settings can be updated without editing code under **Appearance → Cust
 1. **Cedra Glass Design & Brand**: Accent color (`#7024AB`), hero cursor spotlight toggle, vector technical artwork fallback toggle, and card title trailing `(SKU)` cleanup.
 2. **Cedra Contact, Links & Hours**: Top bar tagline, sales email, phone number, corporate URLs (`Home`, `About Us`, `Contact`, `Get a Quote`), Beamsville warehouse address, and ET business hours.
 3. **Cedra Catalog Hero Content**: Eyebrow badge, hero headline & italic serif line, rotating seal ring text, description copy, and distributor marquee label.
+

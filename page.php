@@ -56,3 +56,4 @@ if ( ! $is_chk ) {
 }
 
 get_footer();
+

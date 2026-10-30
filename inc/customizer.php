@@ -227,3 +227,4 @@ function cedra_customize_register( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'cedra_customize_register' );
+

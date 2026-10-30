@@ -267,3 +267,4 @@ $page_pill_text = sprintf(
 		</div>
 	</div>
 </section>
+

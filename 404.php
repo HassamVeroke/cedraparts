@@ -61,3 +61,4 @@ $contact_url = cedra_get_option( 'contact_url' );
 <?php
 get_template_part( 'template-parts/help-band' );
 get_footer();
+
